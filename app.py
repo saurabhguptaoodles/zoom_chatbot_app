@@ -43,12 +43,20 @@ def reply_bot(data):
             temp_var = value.split(" ")[1]
             temp_dict = data.get("payload")
             temp_dict.update({"numeric_value":temp_var})
-            update_query = mycol.insert_one(temp_dict)
-            print ("update mongodb customers table %r"%update_query)
-            msg = "Numerical value is set in the skeleton chat-bot i.e %r."%temp_var
+            try:
+                update_query = mycol.insert_one(temp_dict)
+                print ("update mongodb customers table %r"%update_query)
+                msg = "Numerical value is set in the skeleton chat-bot i.e %r."%temp_var
+            except Exception as e:
+                print ("Exception occur when setting the data from DB :- %r"%e)
+                msg =  "Something went wrong with chat bot."
     elif 'get' == value:
-        fetch_mongo_data = mycol.find_one({},sort=[( '_id', pymongo.DESCENDING )])
-        print ("Variable=%r"%fetch_mongo_data.get('numeric_value'))
+        try:
+            fetch_mongo_data = mycol.find_one({},sort=[( '_id', pymongo.DESCENDING )])
+            print ("Variable=%r"%fetch_mongo_data.get('numeric_value'))
+        except Exception as e:
+            print ("Exception occur when getting the data from DB :- %r"%e)
+            fetch_mongo_data = []
         if fetch_mongo_data:
             msg = "Numerical value is %r."%fetch_mongo_data.get('numeric_value')
         else:
