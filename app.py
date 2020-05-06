@@ -11,7 +11,6 @@ app = Flask(__name__)
 client_id = 'd79TXvuTTZKdauxQwezmDg'
 clent_secret = 'LECHxA1CPyrVcIAFX8JPHiv6li5HPkIK'
 zoom_bot_jid = 'v10uxn66ylss6uoyykrdamea@xmpp.zoom.us'
-temp_var = 0
 
 def authorize_token():
     url = "https://api.zoom.us/oauth/token?grant_type=client_credentials"
