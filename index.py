@@ -41,7 +41,7 @@ def reply_bot(data):
             temp_var = value.split(" ")[1]
             msg = "Numerical value is set in the skeleton chat-bot i.e %r."%temp_var
     elif 'get' == value:
-        print ("VAriable=%r"%temp_var)
+        print ("Variable=%r"%temp_var)
         if temp_var:
             msg = "Numerical value is %r."%temp_var
         else:
