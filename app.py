@@ -95,7 +95,7 @@ def authorize():
     if code:
         print (code)
         mycol2 = mydb["code_collection"]
-        update_query = mycol.insert_one({"code":code,"timestamp":int(time.time())})
+        update_query = mycol2.insert_one({"code":code,"timestamp":int(time.time())})
         print (update_query)
         return "Everything looks fine Zoom App Authorization Successfully."
     return "Something Went Wrong Zoom App Authorization failed."
