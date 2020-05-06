@@ -3,14 +3,24 @@ from base64 import b64encode
 import requests
 import json
 import pymongo
-client = pymongo.MongoClient("localhost", 27017)
-mydb = client["chatbot_database"]
-mycol = mydb["customers"]
-app = Flask(__name__)
+import time
 
+## ZOOM MARKETPLACE APP CONFIGURATION ########
 client_id = 'd79TXvuTTZKdauxQwezmDg'
 clent_secret = 'LECHxA1CPyrVcIAFX8JPHiv6li5HPkIK'
 zoom_bot_jid = 'v10uxn66ylss6uoyykrdamea@xmpp.zoom.us'
+
+## DATABASE ENDPOINT ######
+mongo_url = "mongodb://localhost:27017/"
+
+# DATABASE CONNECTION
+client = pymongo.MongoClient(mongo_url)
+mydb = client["chatbot_database"]
+mycol = mydb["customers"]
+
+#FLASK APP##
+app = Flask(__name__)
+
 
 def authorize_token():
     url = "https://api.zoom.us/oauth/token?grant_type=client_credentials"
@@ -77,14 +87,21 @@ def reply_bot(data):
     print (" POST data coming from Zoom = %r"%result)
     return result
 
+
+## REDIRECT URL #####
 @app.route("/authorize")
 def authorize():
     code = request.args.get('code')
     if code:
         print (code)
+        mycol2 = mydb["code_collection"]
+        update_query = mycol.insert_one({"code":code,"timestamp":int(time.time())})
+        print (update_query)
         return "Everything looks fine Zoom App Authorization Successfully."
     return "Something Went Wrong Zoom App Authorization failed."
 
+
+## BOT ENDPOINT URL FOR SERVER COMMUNICATION #####
 @app.route("/skeleton",methods = ['POST','GET'])
 def skeleton():
     status = "Wrong Http request method only valid for POST method"
@@ -93,6 +110,8 @@ def skeleton():
         status = reply_bot(data)
     return "Reply bot status : %r"%status
 
+
+### INDEX PAGE ######
 @app.route("/")
 def index():
     return "Welcome to the Zoom App."
