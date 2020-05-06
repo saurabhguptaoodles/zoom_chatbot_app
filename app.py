@@ -2,11 +2,15 @@ from flask import Flask,request
 from base64 import b64encode
 import requests
 import json
+import pymongo
+client = pymongo.MongoClient("localhost", 27017)
+mydb = client["chatbot_database"]
+mycol = mydb["customers"]
 app = Flask(__name__)
 
-client_id = 'I2PBvB9nQkCvP4U7qwedgg'
-clent_secret = '4UHFIJFh673zatIBRABdOwo6YK60i4nW'
-zoom_bot_jid = 'v1bhbqcfi5tnswq9pk0bybtg@xmpp.zoom.us'
+client_id = 'd79TXvuTTZKdauxQwezmDg'
+clent_secret = 'LECHxA1CPyrVcIAFX8JPHiv6li5HPkIK'
+zoom_bot_jid = 'v10uxn66ylss6uoyykrdamea@xmpp.zoom.us'
 temp_var = 0
 
 def authorize_token():
@@ -35,15 +39,19 @@ def reply_bot(data):
     }
     msg = "Please use proper declaration to 'set' or 'get' the value of variable. Format Type e.g: /skeleton set 12345 or /skeleton get."
     value = data.get("payload").get('cmd')
-    global temp_var
     if 'set' in value:
         if len(value.split(" ")) > 1 and value.split(" ")[1].isnumeric():
             temp_var = value.split(" ")[1]
+            temp_dict = data.get("payload")
+            temp_dict.update({"numeric_value":temp_var})
+            update_query = mycol.insert_one(temp_dict)
+            print ("update mongodb customers table %r"%update_query)
             msg = "Numerical value is set in the skeleton chat-bot i.e %r."%temp_var
     elif 'get' == value:
-        print ("Variable=%r"%temp_var)
-        if temp_var:
-            msg = "Numerical value is %r."%temp_var
+        fetch_mongo_data = mycol.find_one({},sort=[( '_id', pymongo.DESCENDING )])
+        print ("Variable=%r"%fetch_mongo_data.get('numeric_value'))
+        if fetch_mongo_data:
+            msg = "Numerical value is %r."%fetch_mongo_data.get('numeric_value')
         else:
             msg = "Numerical value is not set use the following command to set value '/skeleton set 12345'."
     revert_msg = {
