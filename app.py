@@ -6,9 +6,9 @@ import pymongo
 import time
 
 ## ZOOM MARKETPLACE APP CONFIGURATION ########
-client_id = 'd79TXvuTTZKdauxQwezmDg'
-clent_secret = 'LECHxA1CPyrVcIAFX8JPHiv6li5HPkIK'
-zoom_bot_jid = 'v10uxn66ylss6uoyykrdamea@xmpp.zoom.us'
+client_id = '1bNwcZDxQbyhZ5IBtLyo6Q'
+clent_secret = 'yiERcI47vrqXCpSKPFgS9LHn3G4EVsJF'
+zoom_bot_jid = 'v1mo_yctuyt8mcykh_8mi1qg@xmpp.zoom.us'
 
 ## DATABASE ENDPOINT ######
 # mongo_url = "mongodb://localhost:27017/"
