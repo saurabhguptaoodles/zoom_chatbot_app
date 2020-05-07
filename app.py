@@ -11,7 +11,8 @@ clent_secret = 'LECHxA1CPyrVcIAFX8JPHiv6li5HPkIK'
 zoom_bot_jid = 'v10uxn66ylss6uoyykrdamea@xmpp.zoom.us'
 
 ## DATABASE ENDPOINT ######
-mongo_url = "mongodb://localhost:27017/"
+# mongo_url = "mongodb://localhost:27017/"
+mongo_url = 'mongodb://%s:%s@127.0.0.1' % ('root', 'root')
 
 # DATABASE CONNECTION
 client = pymongo.MongoClient(mongo_url)
@@ -94,9 +95,13 @@ def authorize():
     code = request.args.get('code')
     if code:
         print (code)
-        mycol2 = mydb["code_collection"]
-        update_query = mycol2.insert_one({"code":code,"timestamp":int(time.time())})
-        print (update_query)
+        try:
+            mycol2 = mydb["code_collection"]
+            update_query = mycol2.insert_one({"code":code,"timestamp":int(time.time())})
+            print (update_query)
+        except Exception as e:
+            print ("Exception occur while update in db during authorize :-%r"%e)
+            return "Issue in Database connection . Please check :("    
         return "Everything looks fine Zoom App Authorization Successfully."
     return "Something Went Wrong Zoom App Authorization failed."
 
