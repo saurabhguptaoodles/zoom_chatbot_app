@@ -119,7 +119,7 @@ def skeleton():
 ### INDEX PAGE ######
 @app.route("/")
 def index():
-    return "Welcome to the Zoom App."
+    return "Welcome to the Zoom App..."
 
 
 if __name__ == "__main__":
