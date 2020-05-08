@@ -6,9 +6,9 @@ import pymongo
 import time
 
 ## ZOOM MARKETPLACE APP CONFIGURATION ########
-client_id = '1bNwcZDxQbyhZ5IBtLyo6Q'
-clent_secret = 'yiERcI47vrqXCpSKPFgS9LHn3G4EVsJF'
-zoom_bot_jid = 'v1mo_yctuyt8mcykh_8mi1qg@xmpp.zoom.us'
+client_id = 'KAat0evuQpSP5ejpBvKU_Q'
+clent_secret = 'mhOHPrO1agPwaPEsMbU825fbWr1vhjyX'
+zoom_bot_jid = 'v1q7xqhebxrhybtwtaoekt1q@xmpp.zoom.us'
 
 ## DATABASE ENDPOINT ######
 # mongo_url = "mongodb://localhost:27017/"
@@ -119,7 +119,7 @@ def skeleton():
 ### INDEX PAGE ######
 @app.route("/")
 def index():
-    return "Welcome to the Zoom App..."
+    return "Welcome to the Zoom App...."
 
 
 if __name__ == "__main__":
