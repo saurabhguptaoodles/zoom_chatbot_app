@@ -121,6 +121,27 @@ def skeleton():
 def index():
     return "Welcome to the Zoom App...."
 
+@app.route("/privacy")
+def privacy():
+    return "privacy."
+
+@app.route("/support")
+def support():
+    return "support"
+
+
+@app.route("/deactivate")
+def deactivate():
+    return "App is deactivated."
+
+@app.route("/verifyzoom.html")
+def verifyzoom():
+    return "af0e4f630f914d25905227557f67ea0c"
+
+
+
+
+
 
 if __name__ == "__main__":
     app.run()
