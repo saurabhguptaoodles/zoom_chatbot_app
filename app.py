@@ -134,7 +134,7 @@ def support():
 def deactivate():
     return "App is deactivated."
 
-@app.route("/verifyzoom.html")
+@app.route("/zoomverify/verifyzoom.html")
 def verifyzoom():
     return "af0e4f630f914d25905227557f67ea0c"
 
