@@ -1,4 +1,4 @@
-# Vote Chatbot for Zoom
+# Flask Chatbot App for Zoom
 
 This is a sample Chatbot app using the [Zoom Chatbot Flask App click here for flask installation](https://flask.palletsprojects.com/en/1.1.x/installation/).
 
@@ -48,10 +48,11 @@ To run the completed Chatbot locally, follow these steps,
 
 7. On your App Marketplace Dashboard, go to the **Local Test** page and click **Install**. After you click the **Authorize** button, you should be taken to your redirect url and see this,
 
-   `Thanks for installing the Vote Chatbot for Zoom!`
+   `Thanks for installing the Chatbot for Zoom!`
 
 
 8. Now that your Chatbot is installed on your Zoom account, go to a Zoom Chat channel and type,
 
    `/skeleton set 123456`
+        or
    `/skeleton get`
