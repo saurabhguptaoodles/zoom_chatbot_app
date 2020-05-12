@@ -127,7 +127,7 @@ def privacy():
 
 @app.route("/support")
 def support():
-    return "support"
+    return "support."
 
 
 @app.route("/deactivate")
