@@ -2,7 +2,6 @@
 
 This is a sample Chatbot app using the [Zoom Chatbot Flask App click here for flask installation](https://flask.palletsprojects.com/en/1.1.x/installation/).
 
-
 To run the completed Chatbot code locally or deploy it to a live server, continue reading below.
 
 ## Local/Development Setup
@@ -28,6 +27,8 @@ To run the completed Chatbot locally, follow these steps,
    client_secret=Required
    zoom_bot_jid=Required
    mongo_url=Required  => To create connection with mongo DB
+   
+[check the screenshot for Zoom app credential click here](https://github.com/saurabhguptaoodles/zoom_chatbot_app/tree/master/screenshots)
    ```
 
 3. In terminal:
