@@ -20,7 +20,7 @@ To run the completed Chatbot locally, follow these steps,
 
 
 
-2. Add this code to your `.env` file, replacing the `Required` text with your respective [**Development** Zoom Chatbot API credentials](https://marketplace.zoom.us/docs/guides/getting-started/app-types/create-chatbot-app#register).
+2. Replace this code to your `app.py` file, replacing the `Required` text with your respective [**Development** Zoom Chatbot API credentials](https://marketplace.zoom.us/docs/guides/getting-started/app-types/create-chatbot-app#register).
 
    ```
    client_id=Required
