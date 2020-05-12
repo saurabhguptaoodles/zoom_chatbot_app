@@ -1,4 +1,4 @@
-# Vote Chatbot for Zoom
+# Flask Chatbot App for Zoom
 
 This is a sample Chatbot app using the [Zoom Chatbot Flask App click here for flask installation](https://flask.palletsprojects.com/en/1.1.x/installation/).
 
