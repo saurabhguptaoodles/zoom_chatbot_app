@@ -54,4 +54,5 @@ To run the completed Chatbot locally, follow these steps,
 8. Now that your Chatbot is installed on your Zoom account, go to a Zoom Chat channel and type,
 
    `/skeleton set 123456`
+        or
    `/skeleton get`
